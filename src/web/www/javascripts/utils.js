@@ -50,7 +50,7 @@ function GATrackBill(url, callback) {
  */
 
 /**
- * Handle updating the application's data from teh internet (oknesset.org)
+ * Handle updating the application's data from the internet (oknesset.org)
  */
 function processInitialData(partyData, partyDataDate) {
 	var partyDataString = JSON.stringify(partyData);
