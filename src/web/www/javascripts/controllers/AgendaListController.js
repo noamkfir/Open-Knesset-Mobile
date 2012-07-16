@@ -9,6 +9,8 @@ Ext.regController('AgendaList', {
                 xtype: 'AgendaListView',
             });
 
+			OKnessetParser.loadDataForAgendas();
+			
             this.agendaListView.addListener('itemtap',
             	function(that, index, item, e) {
 					var record = that.store.getAt(index);
