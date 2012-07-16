@@ -38,5 +38,6 @@ OKnesset.strings = {
 	noCommittees			: 'אין ועדות',
 	coalition               : 'קואליציה',
 	opposition              : 'אופוזיציה',
+	votes                   : 'הצבעות',
 };
 
