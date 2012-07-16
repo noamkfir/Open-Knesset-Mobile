@@ -16,12 +16,12 @@
   background-color: white;
 }
 
-.partySize {
+.partySize, .agendaVotes {
 	float : left;
 	padding-left : 1em;
 }
 
-.partyName div{
+.partyName div, .agendaName div{
 	display : inline;
 }
 
@@ -71,7 +71,8 @@ div.textCenter * {
 /* Center empty bill list emptyText*/
 /* Centers group tittle for bill and party list*/
 #MemberBillList .x-list-parent,
-#PartyListView .x-list-parent {
+#PartyListView .x-list-parent,
+#AgendaListView .x-list-parent {
 	text-align: center;
 }
 
