@@ -13,7 +13,7 @@ var OKnessetParser = new function(){
 	    memberIdArray = new Array();
 
 	    Ext.each(members, function(value, index){
-	        // TODO - do not add memebers that are not "current"
+	        // TODO - do not add members that are not "current"
 	        if (typeof value == "undefined") {
 	            // console.log("** member index " + index + " is undefined.");
 	            return;
@@ -29,14 +29,14 @@ var OKnessetParser = new function(){
 				value.roles = "יושב ראש הכנסת";
 			}
 
-			// filter out bills with stage 2 or less
-			for (var i = 0; i < value.bills.length; i++) {
-				if (parseInt(value.bills[i].stage) < 2) {
-					value.bills.splice(i,1);
-					i--;
-				}
-
-			}
+//			// filter out bills with stage 2 or less
+//			for (var i = 0; i < value.bills.length; i++) {
+//				if (parseInt(value.bills[i].stage) < 2) {
+//					value.bills.splice(i,1);
+//					i--;
+//				}
+//
+//			}
 			var new_committees = [];
 			for (var i = 0; i < value.committees.length; i++) {
 					obj = new Object();
@@ -124,6 +124,15 @@ var OKnessetParser = new function(){
 		callbackFunction(partyNameArray, slimData);
 	}
 
+	function onAgendaFailure(result, request){
+	    console.warn("onAgendaFailure " + result.responseText);
+	}
+
+	function storeAgendas(agendas){
+	    // console.log("** storeAgendas");
+		OKnesset.AgendaStore.loadData(agendas);
+	}
+
 	// ***
 	// Parties
 	// ***
@@ -199,6 +208,19 @@ sortedMembers["13"] = sortedMembers["3"];
 		    callbackKey : "callback",
 			callback : storeParties,
 			onFailure : onPartyFailure
+		});
+
+	}
+
+	this.loadDataForAgendas = function(callback){
+
+		callbackFunction = callback;
+
+		Ext.util.JSONP.request({
+		    url: 'http://www.oknesset.org/api/agenda/',
+		    callbackKey : "callback",
+			callback : storeAgendas,
+			onFailure : onAgendaFailure
 		});
 
 	}
