@@ -61,7 +61,7 @@ OKnesset.MemberCommitteesStore = new Ext.data.Store({
 });
 
 Ext.regModel('Agenda', {
-    fields: ['name']
+    fields: ['name', 'number_of_items']
 });
 
 OKnesset.AgendaStore = new Ext.data.Store({
